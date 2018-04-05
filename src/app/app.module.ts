@@ -1,5 +1,6 @@
+import { UsersService } from './shared/services/user.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
+import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -13,6 +14,7 @@ import { LoginComponent } from './components/misc/login/login.component';
 import { RoutesComponent } from './components/routes/routes.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { SignupComponent } from './components/misc/signup/signup.component';
+import { ModalComponent } from './components/misc/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -21,17 +23,20 @@ import { SignupComponent } from './components/misc/signup/signup.component';
     NavbarComponent,
     RoutesComponent,
     MessagesComponent,
-    SignupComponent
+    SignupComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    Angular2FontawesomeModule
   ],
   providers: [
-    SessionService
+    SessionService,
+    UsersService
   ],
   bootstrap: [AppComponent]
 })

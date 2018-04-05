@@ -1,3 +1,31 @@
-<p>
-  login works!
-</p>
+<ng-template #content let-c="close" let-d="dismiss">
+  <form class="form-group" (ngSubmit)="onSubmitLogin(loginForm)" #loginForm="ngForm">
+    <div class="modal-header">
+        <h4 class="modal-title">Login</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+      <label for="username">Email:</label>
+      <input type="text" class="form-control" name="username" id="username" [(ngModel)]="user.email"/>
+      <br>
+      <label for="username">Password:</label>
+      <input type="password" class="form-control" name="password" id="password" [(ngModel)]="user.password"/>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary">Login3</button>
+    </div>
+  </form>
+  <hr>
+  <div class="panel panel-default">
+      <div class="panel-heading text-center">
+        Don't have an account?
+        <a [routerLink]="['/signup']">Sign up</a>
+      </div>
+  </div>
+</ng-template>
+
+<button class="btn btn-sm btn-outline-primary" (click)="open(content)">
+  <fa name="sign-in"></fa>
+</button>
