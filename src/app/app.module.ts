@@ -15,6 +15,8 @@ import { RoutesComponent } from './components/routes/routes.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { SignupComponent } from './components/misc/signup/signup.component';
 import { ModalComponent } from './components/misc/modal/modal.component';
+import { ProfileComponent } from './components/profile/show/profile.component';
+import { EditComponent } from './components/profile/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { ModalComponent } from './components/misc/modal/modal.component';
     RoutesComponent,
     MessagesComponent,
     SignupComponent,
-    ModalComponent
+    ModalComponent,
+    ProfileComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,

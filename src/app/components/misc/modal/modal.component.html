@@ -78,11 +78,11 @@
       <div class="panel panel-default">
           <div class="panel-heading text-center">
           {{ isSignup ? 'Already have an account?' : 'Don\'t have an account?' }}  
-            <a (click)="changeMode()">{{ isSignup ? 'Log in' : 'Sign up'}}</a>
+            <a (click)="changeMode()" [routerLink]="">{{ isSignup ? 'Log in' : 'Sign up'}}</a>
           </div>
       </div>
     <br>
 </ng-template>
   <button class="btn btn-sm btn-outline-primary" (click)="open(content)">
-    <fa name="sign-in"></fa>
+    <fa name="sign-in" class="fa-2x"></fa>
   </button>
