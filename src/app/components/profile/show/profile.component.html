@@ -1,4 +1,4 @@
-<div class="left col-lg-4">
+<div class="left col-lg-4" *ngIf="user">
     <div class="photo-left">
       <img class="photo" src="https://image.noelshack.com/fichiers/2017/38/2/1505775062-1505606859-portrait-1961529-960-720.jpg"/>
     </div>
@@ -20,5 +20,5 @@
     </div>
     <p class="desc">{{user.about}}</p>
     <hr>
-    <a [routerLink]="['/profile/edit']" *ngIf="isOwner">Edit</a>
+    <a [routerLink]="['/profile/edit',user.id]" *ngIf="isOwner">Edit</a>
 </div>

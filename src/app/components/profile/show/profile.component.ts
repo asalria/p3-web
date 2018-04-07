@@ -13,6 +13,7 @@ import { User } from '../../../shared/model/user.model';
 export class ProfileComponent implements OnInit, OnDestroy {
   user: User;
   userSubscription: Subscription;
+  // tslint:disable-next-line:no-inferrable-types
   isOwner: boolean = false;
 
   constructor(
@@ -32,6 +33,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
           .subscribe(user => {
             this.user = user;
             this.isOwner = this.sessionService.getUser().email === this.user.email;
+            this.userSubscription = this.sessionService.onUserChanges()
+              .subscribe(user2 => this.user = user2);
           });
         } else {
           this.user = this.sessionService.getUser();

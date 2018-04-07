@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  baseApi: 'http://localhost:3000'
+  baseApi: 'http://localhost:3000',
+  googleMapsAPI: 'AIzaSyAuO9VxZ10HZqB5csZHH6rDKxeFIBSZLlQs'
 };
