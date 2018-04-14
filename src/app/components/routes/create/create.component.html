@@ -1,4 +1,4 @@
-<form class="form-group top" (ngSubmit)="onSubmitEdit(form)" #form="ngForm">
+<form class="form-group top" (ngSubmit)="onSubmitCreate(form)" #form="ngForm">
   <div class="form-group input--medium" [class.has-error]="title.errors && title.touched">
       <div class="input-group input--with-icon">
        
@@ -49,13 +49,13 @@
       <input type="text" name="endPoint" class="form-control" placeholder="End" [(ngModel)]="route.endPoint" value="{{endPoint}}" readonly="readonly">
     </div>
   </div>
-  <!--
+  
     <div class="form-group input--medium">
     <div class="input-group input--with-icon">
       <input type="number" step="0.01" name="price" class="form-control" placeholder="How much does it cost?" [(ngModel)]="route.price" #price="ngModel">
     </div>
   </div>
-   -->
+  
 
   <agm-map 
   [latitude]="lat"
@@ -63,7 +63,7 @@
   [zoom]="zoom"
   [disableDefaultUI]="false"
   [zoomControl]="false"
-  (mapClick)="mapClicked($event)">
+  >
 
   <agm-marker 
       *ngFor="let m of markers; let i = index"

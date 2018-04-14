@@ -1,3 +1,4 @@
+import { RoutesService } from './shared/services/routes.service';
 import { UsersService } from './shared/services/user.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
@@ -10,7 +11,6 @@ import { NavbarComponent } from './components/misc/nav-bar/nav-bar.component';
 import { AppComponent } from './app.component';
 import { SessionService } from './shared/services/session.service';
 import { routes } from './app.routes';
-import { LoginComponent } from './components/misc/login/login.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { SignupComponent } from './components/misc/signup/signup.component';
 import { ModalComponent } from './components/misc/modal/modal.component';
@@ -25,7 +25,6 @@ import { AgmCoreModule } from '@agm/core';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     NavbarComponent,
     MessagesComponent,
     SignupComponent,
@@ -50,7 +49,8 @@ import { AgmCoreModule } from '@agm/core';
   ],
   providers: [
     SessionService,
-    UsersService
+    UsersService,
+    RoutesService
   ],
   bootstrap: [AppComponent]
 })

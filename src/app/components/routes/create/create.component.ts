@@ -1,9 +1,10 @@
+import { RoutesService } from './../../../shared/services/routes.service';
 import { Route } from './../../../shared/model/route.model';
 import { Component, OnInit, Input, Output, EventEmitter, ElementRef, Renderer, Directive } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { MouseEvent } from '@agm/core';
 import { } from '@types/googlemaps';
-import { RouteConfigLoadEnd } from '@angular/router';
+import { RouteConfigLoadEnd, Router } from '@angular/router';
 
 interface Marker {
   lat: number;
@@ -21,14 +22,20 @@ interface Marker {
 
 export class CreateComponent implements OnInit {
 
+constructor(
+  private routesService: RoutesService,
+  private router: Router
+) {}
+
+apiError: string;
  // google maps zoom level
  // tslint:disable-next-line:no-inferrable-types
  zoom: number = 14;
  // initial center position for the map
  // tslint:disable-next-line:no-inferrable-types
- lat: number = 0;
+ lat: number = 40.3913563;
  // tslint:disable-next-line:no-inferrable-types
- lng: number = 0;
+ lng: number = -3.6995028;
 
  startPoint = [];
 
@@ -85,6 +92,24 @@ export class CreateComponent implements OnInit {
   );
  }
  }
+
+ onSubmitCreate(form) {
+    console.log(this.route);
+    const route = {
+      ...this.route,
+      startPoint: this.startPoint,
+      endPoint: this.endPoint
+    };
+    this.routesService.create(route).subscribe(
+      (user) => {
+        form.reset();
+        this.router.navigate(['/']);
+      },
+      (error) => {
+        this.apiError = error.message;
+      }
+    );
+}
 
 
 
