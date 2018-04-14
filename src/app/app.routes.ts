@@ -10,6 +10,7 @@ export const routes: Routes = [
     { path: '', redirectTo: 'routes', pathMatch: 'full'},
     { path: 'routes', component: ListComponent},
     { path: 'routes/new', component: CreateComponent},
+    { path: 'login', component: LoginComponent},
     { path: 'signup', component: SignupComponent },
     { path: 'profile', component: ProfileComponent},
     { path: 'profile/edit/:id', component: EditComponent},

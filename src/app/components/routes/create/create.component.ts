@@ -1,5 +1,5 @@
 import { Route } from './../../../shared/model/route.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef, Renderer, Directive } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { MouseEvent } from '@agm/core';
 import { } from '@types/googlemaps';
@@ -19,17 +19,27 @@ interface Marker {
 })
 
 
-export class CreateComponent {
+export class CreateComponent implements OnInit {
+
  // google maps zoom level
  // tslint:disable-next-line:no-inferrable-types
- zoom: number = 10;
+ zoom: number = 14;
  // initial center position for the map
  // tslint:disable-next-line:no-inferrable-types
- lat: number = 51.673858;
+ lat: number = 0;
  // tslint:disable-next-line:no-inferrable-types
- lng: number = 7.815982;
+ lng: number = 0;
+
+ startPoint = [];
+
+ endPoint = [];
+
+ markers: Marker[] = [];
+
+ location;
 
  route: Route = new Route();
+
 
  clickedMarker(label: string, index: number) {
    console.log(`clicked the marker: ${label || index}`);
@@ -43,25 +53,43 @@ export class CreateComponent {
    });
  }
 */
- markerDragEnd(m: Marker, $event: MouseEvent) {
+ markerDragEnd(m, $event: MouseEvent) {
    console.log('dragEnd', m, $event);
+
+   if ( m.label === 'S' ) {
+    this.startPoint = [m.lat, m.lng];
+   } else {
+    this.endPoint = [m.lat, m.lng];
+   }
+  // this.start = 'Hola';
  }
 
+ ngOnInit() {
+  if ( navigator.geolocation ) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      this.lat = position.coords.latitude;
+      this.lng = position.coords.longitude;
+      this.markers.push({
+        lat: position.coords.latitude - 0.001,
+        lng: position.coords.longitude - 0.001,
+        label: 'S',
+        draggable: true
+      });
+      this.markers.push({
+        lat: position.coords.latitude + 0.001,
+        lng: position.coords.longitude + 0.001,
+        label: 'E',
+        draggable: true
+      });
+    }.bind(this)
+  );
+ }
+ }
+
+
+
  // tslint:disable-next-line:member-ordering
- markers: Marker[] = [
-   {
-     lat: 51.673858,
-     lng: 7.815982,
-     label: 'S',
-     draggable: true
-   },
-   {
-     lat: 51.373858,
-     lng: 7.215982,
-     label: 'E',
-     draggable: true
-   }
-  ];
+
 }
 
 // just an interface for type safety.
