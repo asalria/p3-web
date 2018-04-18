@@ -1,3 +1,20 @@
-<p>
-  view works!
-</p>
+<div class="row justify-content-md-center" *ngIf="route">
+    <div class="col col-lg-2">
+    </div>
+    <div class="col-md-auto top1">
+        <img src="{{route.img}}">
+        <br>
+        <h3>{{route.title}}</h3>
+        <h4>{{route.owner}}</h4>
+        <h4>{{route.city}}</h4>
+        <p>{{route.description}}</p>
+        <ul>
+          <li>How much does it last?: {{route.duration}} </li>
+          <li>How will you move?: {{route.transport}} </li>
+          <li>How much does it cost?: {{route.price}}€ </li>
+        </ul>
+        <star-rating-comp [starType]="'svg'" [rating]="2.63"></star-rating-comp>
+    </div>
+    <div class="col col-lg-2">
+    </div>
+</div>

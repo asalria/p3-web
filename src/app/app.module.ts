@@ -20,6 +20,7 @@ import { CreateComponent } from './components/routes/create/create.component';
 import { ViewComponent } from './components/routes/view/view.component';
 import { ListComponent } from './components/routes/list/list.component';
 import { AgmCoreModule } from '@agm/core';
+import { StarRatingModule } from 'angular-star-rating';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { AgmCoreModule } from '@agm/core';
     Angular2FontawesomeModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD0LLQ7FV-9sLdzoWQj7IEiMcmTSUJqCcU'
-    })
+    }),
+    StarRatingModule.forRoot()
   ],
   providers: [
     SessionService,

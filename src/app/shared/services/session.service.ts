@@ -4,6 +4,7 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs/Rx';
+import { Route } from '@angular/router';
 
 const CURRENT_USER_KEY = 'currentUser';
 
@@ -13,6 +14,7 @@ export class SessionService extends BaseApiService {
 
   private user: User;
   private userSubject: Subject<User> = new Subject();
+  private routeSubject: Subject<Route> = new Subject();
 
   constructor(private http: Http) {
     super();
@@ -40,6 +42,10 @@ export class SessionService extends BaseApiService {
     return this.user ? true : false;
   }
 
+  isAuthor(id): boolean {
+    return this.user.id === id ? true : false;
+  }
+
   getUser(): User {
     return this.user;
   }
@@ -50,6 +56,10 @@ export class SessionService extends BaseApiService {
 
   onUserChanges(): Observable<User> {
     return this.userSubject.asObservable();
+  }
+
+  onRouteChanges(): Observable<Route> {
+    return this.routeSubject.asObservable();
   }
 
   private doAuthentication(user: User): User {

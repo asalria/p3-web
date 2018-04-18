@@ -51,22 +51,34 @@ apiError: string;
  clickedMarker(label: string, index: number) {
    console.log(`clicked the marker: ${label || index}`);
  }
-/*
+
  mapClicked($event: any) {
+   if ( this.markers.length < 1 ) {
    this.markers.push({
      lat: $event.coords.lat,
      lng: $event.coords.lng,
+     label: 'S',
      draggable: true
    });
+   this.startPoint = [$event.coords.lat, $event.coords.lng];
+    } else if ( this.markers.length < 2 && this.markers.length > 0) {
+      this.markers.push({
+        lat: $event.coords.lat,
+        lng: $event.coords.lng,
+        label: 'E',
+        draggable: true
+      });
+      this.endPoint = [$event.coords.lat, $event.coords.lng];
+    }
  }
-*/
+
  markerDragEnd(m, $event: MouseEvent) {
    console.log('dragEnd', m, $event);
 
    if ( m.label === 'S' ) {
-    this.startPoint = [m.lat, m.lng];
+    this.startPoint = [$event.coords.lat, $event.coords.lng];
    } else {
-    this.endPoint = [m.lat, m.lng];
+    this.endPoint = [$event.coords.lat, $event.coords.lng];
    }
   // this.start = 'Hola';
  }
@@ -76,18 +88,6 @@ apiError: string;
     navigator.geolocation.getCurrentPosition(function(position) {
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
-      this.markers.push({
-        lat: position.coords.latitude - 0.001,
-        lng: position.coords.longitude - 0.001,
-        label: 'S',
-        draggable: true
-      });
-      this.markers.push({
-        lat: position.coords.latitude + 0.001,
-        lng: position.coords.longitude + 0.001,
-        label: 'E',
-        draggable: true
-      });
     }.bind(this)
   );
  }

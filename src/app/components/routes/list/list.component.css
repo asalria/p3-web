@@ -19,6 +19,7 @@
 	flex-grow: 1;
 }
 .flex-row img {
+    margin-top: 0.5rem;
 	min-width: 0;
 	width: 100%;
 }

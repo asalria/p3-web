@@ -1,3 +1,4 @@
+import { User } from './user.model';
 export class Route {
     id: string;
     title: string;
@@ -9,4 +10,5 @@ export class Route {
     startPoint: Array<Number>;
     endPoint: Array<Number>;
     img: string;
+    owner: User;
 }
