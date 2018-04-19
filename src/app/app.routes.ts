@@ -6,6 +6,7 @@ import { SignupComponent } from './components/misc/signup/signup.component';
 import { ViewComponent } from './components/routes/view/view.component';
 import { Routes } from '@angular/router';
 import { IsAuthorGuard } from './guards/is-author.guard';
+import { IsAuthenticatedGuard } from './guards/is-authenticated.guard';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'routes', pathMatch: 'full'},

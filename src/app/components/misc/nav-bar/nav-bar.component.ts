@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit, OnDestroy {
   user: User;
   userSubscription: Subscription;
+  fullImagePath: string;
 
   constructor(
     private router: Router,
@@ -21,6 +22,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.user = this.sessionService.getUser();
     this.userSubscription = this.sessionService.onUserChanges()
       .subscribe(user => this.user = user);
+    this.fullImagePath = '../../assets/images/logo.png';
   }
 
   ngOnDestroy() {

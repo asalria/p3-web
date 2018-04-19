@@ -32,7 +32,7 @@ export class ViewComponent implements OnInit {
           .get(params['id'])
           .subscribe(route => {
             this.route = route;
-            this.isOwner = this.sessionService.getUser().id === this.route.owner.id;
+            this.isOwner = this.sessionService.getUser().id === this.route.owner;
             /*
             this.routeSubscription = this.sessionService.onRouteChanges()
               .subscribe(route2 => this.route = route2);

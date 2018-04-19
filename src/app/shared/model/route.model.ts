@@ -10,5 +10,5 @@ export class Route {
     startPoint: Array<Number>;
     endPoint: Array<Number>;
     img: string;
-    owner: User;
+    owner: string;
 }

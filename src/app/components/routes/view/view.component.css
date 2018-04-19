@@ -67,10 +67,11 @@ body {
     left:30%; right:30%;
   }
   
-  .header h2 {
+  .header h2,h3 {
     font-size:3em;
     font-weight:300;
     margin-bottom:0.2em;
+    margin-top:0.2em;
   }
   
   .header p {
@@ -153,5 +154,9 @@ body {
   /* Selected state of the stars */
   .rating-stars ul > li.star.selected > i.fa {
     color:#FF912C;
+  }
+
+  .message {
+    padding-top: 1rem;
   }
   

@@ -1,3 +1,4 @@
+import { IsAuthenticatedGuard } from './guards/is-authenticated.guard';
 import { RoutesService } from './shared/services/routes.service';
 import { UsersService } from './shared/services/user.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -8,10 +9,10 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './components/misc/nav-bar/nav-bar.component';
+import { MessageModalComponent } from './components/messages/create/create.component';
 import { AppComponent } from './app.component';
 import { SessionService } from './shared/services/session.service';
 import { routes } from './app.routes';
-import { MessagesComponent } from './components/messages/messages.component';
 import { SignupComponent } from './components/misc/signup/signup.component';
 import { ModalComponent } from './components/misc/modal/modal.component';
 import { ProfileComponent } from './components/profile/show/profile.component';
@@ -19,22 +20,24 @@ import { EditComponent } from './components/profile/edit/edit.component';
 import { CreateComponent } from './components/routes/create/create.component';
 import { ViewComponent } from './components/routes/view/view.component';
 import { ListComponent } from './components/routes/list/list.component';
+
 import { AgmCoreModule } from '@agm/core';
 import { StarRatingModule } from 'angular-star-rating';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    MessagesComponent,
     SignupComponent,
     ModalComponent,
     ProfileComponent,
     EditComponent,
     CreateComponent,
     ViewComponent,
-    ListComponent
+    ListComponent,
+    MessageModalComponent
   ],
   imports: [
     BrowserModule,

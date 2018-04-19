@@ -1,3 +1,5 @@
+import { SessionService } from './../../../shared/services/session.service';
+import { User } from './../../../shared/model/user.model';
 import { RoutesService } from './../../../shared/services/routes.service';
 import { Route } from './../../../shared/model/route.model';
 import { Component, OnInit, Input, Output, EventEmitter, ElementRef, Renderer, Directive } from '@angular/core';
@@ -23,10 +25,11 @@ interface Marker {
 export class CreateComponent implements OnInit {
 
 constructor(
+  private sessionService: SessionService,
   private routesService: RoutesService,
   private router: Router
 ) {}
-
+user: User;
 apiError: string;
  // google maps zoom level
  // tslint:disable-next-line:no-inferrable-types
@@ -84,6 +87,7 @@ apiError: string;
  }
 
  ngOnInit() {
+  this.user = this.sessionService.getUser();
   if ( navigator.geolocation ) {
     navigator.geolocation.getCurrentPosition(function(position) {
       this.lat = position.coords.latitude;
@@ -97,6 +101,7 @@ apiError: string;
     console.log(this.route);
     const route = {
       ...this.route,
+      owner: this.user.id,
       startPoint: this.startPoint,
       endPoint: this.endPoint
     };
