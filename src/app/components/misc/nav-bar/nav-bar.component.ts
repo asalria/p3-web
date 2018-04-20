@@ -1,5 +1,8 @@
+import { SearchService } from './../../../shared/services/search.service';
+import { RoutesService } from './../../../shared/services/routes.service';
 import { Observable, Subscription } from 'rxjs/Rx';
 import { User } from './../../../shared/model/user.model';
+import { Route } from './../../../shared/model/route.model';
 import { SessionService } from './../../../shared/services/session.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
@@ -13,10 +16,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
   user: User;
   userSubscription: Subscription;
   fullImagePath: string;
+  searchTxt: string;
+  routes: Array<Route> = [];
 
   constructor(
     private router: Router,
-    private sessionService: SessionService) { }
+    private sessionService: SessionService,
+    private routeService: RoutesService,
+    private searchService: SearchService
+  ) { }
+
 
   ngOnInit() {
     this.user = this.sessionService.getUser();
@@ -32,8 +41,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   onClickLogout() {
     this.sessionService.logout()
       .subscribe(() => {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/']);
       });
   }
+
+  performSearch(searchTerm: HTMLInputElement): void {
+      this.searchService.filterBy(searchTerm.value);
+    }
 
 }

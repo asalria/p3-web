@@ -16,7 +16,7 @@ export class IsAuthenticatedGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     const isAuthenticated = this.sessionService.isAuthenticated();
     if (!isAuthenticated) {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/']);
     }
     return isAuthenticated;
   }

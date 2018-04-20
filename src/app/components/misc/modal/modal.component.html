@@ -34,7 +34,13 @@
         </div>
         <div class="form-group input--medium" *ngIf="isSignup">
             <div class="input-group input--with-icon">
-              <textarea name="about" class="form-control" placeholder="About you" [(ngModel)]="user.about" #about="ngModel" required
+                <input type="text" name="img" class="form-control" placeholder="Profile pic url" [(ngModel)]="user.img" #img="ngModel" required
+                img>
+            </div>
+        </div>
+        <div class="form-group input--medium" *ngIf="isSignup">
+            <div class="input-group input--with-icon">
+              <textarea name="img" class="form-control" placeholder="About you" [(ngModel)]="user.about" #about="ngModel" required
                 about></textarea>
             </div>
         </div>

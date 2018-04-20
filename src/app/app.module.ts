@@ -1,3 +1,5 @@
+import { MessageListComponent } from './components/messages/list/list.component';
+import { MessageService } from './shared/services/message.service';
 import { IsAuthenticatedGuard } from './guards/is-authenticated.guard';
 import { RoutesService } from './shared/services/routes.service';
 import { UsersService } from './shared/services/user.service';
@@ -11,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './components/misc/nav-bar/nav-bar.component';
 import { MessageModalComponent } from './components/messages/create/create.component';
 import { AppComponent } from './app.component';
+import { SearchService } from './shared/services/search.service';
 import { SessionService } from './shared/services/session.service';
 import { routes } from './app.routes';
 import { SignupComponent } from './components/misc/signup/signup.component';
@@ -23,6 +26,9 @@ import { ListComponent } from './components/routes/list/list.component';
 
 import { AgmCoreModule } from '@agm/core';
 import { StarRatingModule } from 'angular-star-rating';
+import { UserroutesComponent } from './components/routes/userroutes/userroutes.component';
+import { DeleteRouteComponent } from './components/routes/delete/delete.component';
+
 
 
 
@@ -37,7 +43,10 @@ import { StarRatingModule } from 'angular-star-rating';
     CreateComponent,
     ViewComponent,
     ListComponent,
-    MessageModalComponent
+    MessageModalComponent,
+    MessageListComponent,
+    UserroutesComponent,
+    DeleteRouteComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +64,9 @@ import { StarRatingModule } from 'angular-star-rating';
   providers: [
     SessionService,
     UsersService,
-    RoutesService
+    RoutesService,
+    MessageService,
+    SearchService
   ],
   bootstrap: [AppComponent]
 })

@@ -19,6 +19,7 @@ export class UsersService extends BaseApiService {
   }
 
   edit(user: User): Observable<User> {
+    user = User.fromJson(user);
     return this.http.put(`${UsersService.USERS_API}/${user.id}`, JSON.stringify(user), BaseApiService.defaultOptions)
       .map(res => res.json())
       .catch(error => this.handleError(error));

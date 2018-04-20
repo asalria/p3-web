@@ -4,4 +4,5 @@ export class Message {
     receiver: string;
     message: string;
     created: Date;
+    route: string;
 }

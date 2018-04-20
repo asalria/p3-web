@@ -1,5 +1,5 @@
 
-            <form class="form-group header" (ngSubmit)="onSubmitEdit(form)" #form="ngForm" >
+            <form class="form-group header" (ngSubmit)="onSubmitEdit(form)" #form="ngForm" *ngIf="user">
               <div class="form-group input--medium" [class.has-error]="email.errors && email.touched">
                   <div class="input-group input--with-icon">
                    
@@ -42,6 +42,12 @@
                       <li *ngIf="city.errors.required">Required</li>
                     </ul>
                   </label>
+              </div>
+              <div class="form-group input--medium">
+                  <div class="input-group input--with-icon">
+                      <input type="text" name="img" class="form-control" placeholder="Profile pic url" [(ngModel)]="user.img" #img="ngModel" required
+                      img>
+                  </div>
               </div>
               <div class="form-group input--medium" [class.has-error]="phone.errors && phone.touched">
                 <div class="input-group input--with-icon">

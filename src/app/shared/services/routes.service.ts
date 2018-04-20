@@ -31,8 +31,26 @@ export class RoutesService extends BaseApiService {
       .catch(error => this.handleError(error));
   }
 
+  delete(id): Observable<Route> {
+    return this.http.delete(`${RoutesService.ROUTES_API}/${id}`, BaseApiService.defaultOptions)
+      .map(res => res.json())
+      .catch(error => this.handleError(error));
+  }
+
   list(): Observable<Array<Route>> {
     return this.http.get(RoutesService.ROUTES_API, BaseApiService.defaultOptions)
+      .map((res: Response) => res.json())
+      .catch(error => this.handleError(error));
+  }
+
+  listUserRoutes(id): Observable<Array<Route>> {
+    return this.http.get(`${RoutesService.ROUTES_API}/user/${id}`, BaseApiService.defaultOptions)
+      .map((res: Response) => res.json())
+      .catch(error => this.handleError(error));
+  }
+
+  find(search): Observable<Array<Route>> {
+    return this.http.get(`${RoutesService.ROUTES_API}/location/${search}`, BaseApiService.defaultOptions)
       .map((res: Response) => res.json())
       .catch(error => this.handleError(error));
   }

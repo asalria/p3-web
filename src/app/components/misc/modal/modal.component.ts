@@ -29,12 +29,15 @@ export class ModalComponent implements OnInit {
   }
   ngOnInit() { }
 
-  onSubmitSignup(form) {
+  onSubmitSignup(form, content) {
     if (this.isSignup) {
       this.usersService.create(this.user).subscribe(
         (user) => {
           form.reset();
-          this.router.navigate(['/']);
+          this.modal.close();
+          this.isSignup = this.isSignup;
+          this.modal = this.modalService.open(content);
+
         },
         (error) => {
           this.apiError = error.message;
@@ -45,7 +48,7 @@ export class ModalComponent implements OnInit {
         (user) => {
           form.reset();
           this.modal.close();
-          this.router.navigate(['/routes']);
+          this.router.navigate(['/']);
         },
         (error) => {
           this.apiError = error.message;

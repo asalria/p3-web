@@ -2,27 +2,28 @@
     <div class="col col-lg-2">
     </div>
     <div class="col-md-auto top1">
-        <img src="{{route.img}}">
-        <br>
-        <div class="row">
-            <div class="col-md-auto top1">
-                <h3>{{route.title}}</h3>
+            <img src="{{route.img}}">
+            <br>
+            <div class="row">
+                <div class="col-md-auto top1">
+                    <h3>{{route.title}}</h3>
+                </div>
+                <div class="col-md-auto message" *ngIf="user">
+                        <app-create-message [route]="route" *ngIf="user.id != route.owner.id"></app-create-message>
+                </div>
             </div>
-            <div class="col-md-auto message">
-                    <app-create-message></app-create-message>
-            </div>
-        </div>
-        
-        <h4>{{route.owner}}</h4>
-        <h4>{{route.city}}</h4>
-        <p>{{route.description}}</p>
-        <ul>
-          <li>How much does it last?: {{route.duration}} </li>
-          <li>How will you move?: {{route.transport}} </li>
-          <li>How much does it cost?: {{route.price}}€ </li>
-        </ul>
-        <!-- <star-rating-comp [starType]="'svg'" [rating]="2.63"></star-rating-comp> -->
+            <a class="nav-link" [routerLink]="['/profile/',route.owner.id]"><h4>{{route.owner.nick}}</h4></a>
+            <h4>{{route.city}}</h4>
+            <p>{{route.description}}</p>
+            <ul>
+                    <li>How much does it last?: {{route.duration}} </li>
+                    <li>How will you move?: {{route.transport}} </li>
+                    <li>How much does it cost?: {{route.price}}€ </li>
+            </ul>
+            <div *ngIf="user">
+                    <button type="button" class="btn btn-danger" [routerLink]="['/routes/delete', route._id]" *ngIf="route.owner.id == user.id">Delete</button>
+                    <button type="button" class="btn btn-warning" [routerLink]="['/routes/edit', route._id]" *ngIf="route.owner.id == user.id">Edit</button>
+            </div>  
     </div>
-    <div class="col col-lg-2">
-    </div>
+
 </div>

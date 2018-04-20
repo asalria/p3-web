@@ -1,0 +1,16 @@
+<h4>User Routes</h4>
+<div class="container">
+    <div class="flex-row row">
+      <div *ngFor="let route of routes" class="col-xs-6 col-sm-4 col-lg-3">
+        <div class="thumbnail">
+          <img src="{{route.img}}">
+          <div class="caption">
+            <h3> {{ route.title }} </h3>
+            <p class="flex-text text-muted">{{ route.description }} </p>
+            <a class="btn btn-primary button" [routerLink]="['/routes', route._id]"> View Details </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

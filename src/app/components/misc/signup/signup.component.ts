@@ -29,7 +29,8 @@ export class SignupComponent {
     this.usersService.create(this.user).subscribe(
       (user) => {
         signupForm.reset();
-        this.router.navigate(['/login']);
+        this.modal.close();
+        this.router.navigate(['/']);
       },
       (error) => {
         this.apiError = error.message;

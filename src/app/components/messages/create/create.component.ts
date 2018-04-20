@@ -1,10 +1,13 @@
+import { MessageService } from './../../../shared/services/message.service';
+import { Route } from './../../../shared/model/route.model';
 import { SessionService } from './../../../shared/services/session.service';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap/modal/modal-ref';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap/modal/modal';
 import { UsersService } from './../../../shared/services/user.service';
 import { Router } from '@angular/router';
 import { User } from './../../../shared/model/user.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Message } from '../../../shared/model/message.model';
 
 @Component({
   selector: 'app-create-message',
@@ -13,49 +16,50 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class MessageModalComponent implements OnInit {
-
+  @Input() route: Route;
   user: User = new User();
+  message1: Message = new Message();
   apiError: string;
   modal: NgbModalRef;
+  date: Date;
   isSignup: Boolean = false;
   constructor(
     private router: Router,
     private usersService: UsersService,
     private modalService: NgbModal,
-    private sessionService: SessionService
+    private sessionService: SessionService,
+    private messageService: MessageService
   ) {}
 
   open(content) {
     this.modal = this.modalService.open(content);
   }
 
-  ngOnInit() { }
-
-  onSubmitCreateMessage(form) {
-    if (this.isSignup) {
-      this.usersService.create(this.user).subscribe(
-        (user) => {
-          form.reset();
-          this.router.navigate(['/']);
-        },
-        (error) => {
-          this.apiError = error.message;
-        }
-      );
-    } else {
-      this.sessionService.authenticate(this.user).subscribe(
-        (user) => {
-          form.reset();
-          this.modal.close();
-          this.router.navigate(['/routes']);
-        },
-        (error) => {
-          this.apiError = error.message;
-        }
-      );
-    }
+  ngOnInit() {
+    this.user = this.sessionService.getUser();
   }
 
+  onSubmitMessage(form) {
+    this.date =  new Date();
+    this.user = this.sessionService.getUser();
+    const fullMessage = {
+      ...this.message1,
+      sender: this.user.id,
+      receiver: this.route.owner,
+      created: this.date,
+      route: this.route.id
+    };
+    this.messageService.create(fullMessage).subscribe(
+      (message) => {
+        form.reset();
+        this.modal.close();
+        this.router.navigate(['/']);
+      },
+      (error) => {
+        this.apiError = error.message;
+      }
+    );
+  }
 }
 
 

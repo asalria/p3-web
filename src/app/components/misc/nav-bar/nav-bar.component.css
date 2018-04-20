@@ -14,10 +14,19 @@ clear {
 
 .dropdown-menu {
     justify-content: flex-start;
-    width:100vw;   
+    width:51rem;   
 }
 
 .logo {
    height: 5rem;
+}
+
+.search {
+    width: 6rem;
+}
+
+.searchbar {
+    width: 44.6rem;
+    height: 4rem;
 }
 
