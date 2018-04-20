@@ -48,6 +48,7 @@ apiError: string;
 
  location;
 
+ // tslint:disable-next-line:prefer-const
  route: Route = new Route();
 
 

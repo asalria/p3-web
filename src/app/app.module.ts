@@ -1,9 +1,10 @@
+import { MessageViewComponent } from './components/messages/view/view.component';
 import { MessageListComponent } from './components/messages/list/list.component';
 import { MessageService } from './shared/services/message.service';
 import { IsAuthenticatedGuard } from './guards/is-authenticated.guard';
 import { RoutesService } from './shared/services/routes.service';
 import { UsersService } from './shared/services/user.service';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule, NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
@@ -46,7 +47,8 @@ import { DeleteRouteComponent } from './components/routes/delete/delete.componen
     MessageModalComponent,
     MessageListComponent,
     UserroutesComponent,
-    DeleteRouteComponent
+    DeleteRouteComponent,
+    MessageViewComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,8 @@ import { DeleteRouteComponent } from './components/routes/delete/delete.componen
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD0LLQ7FV-9sLdzoWQj7IEiMcmTSUJqCcU'
     }),
-    StarRatingModule.forRoot()
+    StarRatingModule.forRoot(),
+    NgbCollapseModule
   ],
   providers: [
     SessionService,

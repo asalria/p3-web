@@ -18,6 +18,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   fullImagePath: string;
   searchTxt: string;
   routes: Array<Route> = [];
+  isCollapsed: boolean;
 
   constructor(
     private router: Router,

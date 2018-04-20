@@ -1,14 +1,16 @@
 import { User } from './user.model';
 export class Route {
-    id: string;
-    title: string;
+    public id: string;
+    public title: string;
     city: string;
     price: string;
-    details: string;
+    public description: string;
     phone: string;
     password?: string;
     startPoint: Array<Number>;
     endPoint: Array<Number>;
     img: string;
     owner: string;
+    duration: string;
+    transport: string;
 }
