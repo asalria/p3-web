@@ -10,8 +10,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "deploy": "ng build --prod --aot --base-href 'https://github.com/asalria/p3-api/' && rm dist/3rdpartylicenses.txt && ngh --no-silent"
-
-    
   },
   "private": true,
   "dependencies": {
@@ -42,7 +40,7 @@
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
-    "@angular/cli": "~1.7.2",
+    "@angular/cli": "^1.7.4",
     "@angular/compiler-cli": "^5.2.0",
     "@angular/language-service": "^5.2.0",
     "@types/jasmine": "~2.8.3",
@@ -62,4 +60,3 @@
     "typescript": "~2.5.3"
   }
 }
-
