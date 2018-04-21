@@ -1,6 +1,7 @@
 import { User } from './user.model';
 export class Route {
     public id: string;
+    _id: string;
     public title: string;
     city: string;
     price: string;

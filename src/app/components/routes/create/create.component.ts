@@ -101,7 +101,7 @@ apiError: string;
  onSubmitCreate(form) {
     const route = {
       ...this.route,
-      owner: this.user.id,
+      owner: this.user,
       startPoint: this.startPoint,
       endPoint: this.endPoint
     };

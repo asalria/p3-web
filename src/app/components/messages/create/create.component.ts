@@ -42,7 +42,6 @@ export class MessageModalComponent implements OnInit {
   onSubmitMessage(form) {
     this.date =  new Date();
     this.user = this.sessionService.getUser();
-    debugger
     const fullMessage = {
       ...this.message1,
       sender: this.user.id,
