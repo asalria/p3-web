@@ -45,7 +45,7 @@ export class MessageModalComponent implements OnInit {
     const fullMessage = {
       ...this.message1,
       sender: this.user.id,
-      receiver: this.route.owner,
+      receiver: this.route.owner._id,
       created: this.date,
       route: this.route.id
     };
