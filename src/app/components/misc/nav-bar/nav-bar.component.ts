@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.user = this.sessionService.getUser();
     this.userSubscription = this.sessionService.onUserChanges()
       .subscribe(user => this.user = user);
-    this.fullImagePath = '../../assets/images/logo.png';
+    this.fullImagePath = 'https://asalria.github.io/p3-web/assets/images/logo.png';
   }
 
   ngOnDestroy() {
