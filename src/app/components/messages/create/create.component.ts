@@ -42,12 +42,13 @@ export class MessageModalComponent implements OnInit {
   onSubmitMessage(form) {
     this.date =  new Date();
     this.user = this.sessionService.getUser();
+    debugger
     const fullMessage = {
       ...this.message1,
       sender: this.user.id,
-      receiver: this.route.owner._id,
+      receiver: this.route.owner.id,
       created: this.date,
-      route: this.route.id
+      route: this.route._id
     };
     this.messageService.create(fullMessage).subscribe(
       (message) => {

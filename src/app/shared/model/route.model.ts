@@ -10,7 +10,7 @@ export class Route {
     startPoint: Array<Number>;
     endPoint: Array<Number>;
     img: string;
-    owner: string;
+    owner: User;
     duration: string;
     transport: string;
 }
